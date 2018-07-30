@@ -1,0 +1,5 @@
+# Star aligner docker image for Biodepot-workflow-builder
+
+The star align package is compiled from source and copied into a fresh image to eliminate the intermediate steps. We are using the debian-slim image to save space. Alpine works for the generation of indices but not the alignment steps without recompiling. The generation and update of the docker image is automated by the build.sh bash script.
+
+STAR supports multiple files for a single sample but not multiple samples. A wrapper script is placed around the STAR aligner for quantification. This manages multiple files and samples and passes them to STAR. The flag for single/paired end is checked so that these are passed in pairs if necessary. The order of the paired end files is also queried by the widget (i.e. alternating 121212 or grouped 11112222)
